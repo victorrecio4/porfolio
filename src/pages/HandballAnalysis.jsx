@@ -1,4 +1,6 @@
 import { motion } from 'framer-motion';
+import { useState } from 'react';
+import { FaBook, FaVideo } from 'react-icons/fa';
 
 const experiences = [
   {
@@ -30,35 +32,87 @@ const analyses = [
     description: 'Estudio detallado del juego de la Seleccion de Andalucia Cadete en el CESA 2025',
     date: 'Enero 2025',
     tags: ['Táctica', 'Defensa', 'Análisis de Video'],
-    pdf: '/analisis/INFORME SELECCION NAVARRA CADETE .pdf',
+    type: 'pdf',
+    content: '/analisis/INFORME SELECCION NAVARRA CADETE .pdf',
   },
   {
     title: 'Analisis propio CDBM Delicias',
     description: 'Analisis propio del Balonmano Delicias Juvenil 2025',
     date: 'Febrero 2025',
     tags: ['Estadísticas', 'Rendimiento', 'Análisis de Datos'],
-    pdf: '/analisis/tendencias-juego.pdf',
+    type: 'video',
+    content: 'https://www.youtube.com/embed/VIDEO_ID_2',
   },
   {
     title: 'Análisis Ademar León Juvenil para Fase Final CYL 2025',
     description: 'Estudio detallador del juego y jugadores de Ademar León Juvenil para Fase Final CYL 2025',
     date: 'Abril 2025',
     tags: ['Táctica', 'Defensa', 'Análisis de Video'],
-    pdf: '/analisis/analisis ademar.pdf',
+    type: 'video',
+    content: 'https://www.youtube.com/embed/ZSuxMe0cCSg',
   },
   {
-    title: 'Estadísticas de Eficiencia CDBM Delicias',
-    description: 'Analisis de la eficacion de lanzamiento del Balonmano Delicias Juvenil 2025',
-    date: 'Proximamente',
+    title: 'Analisis Atletico Valladolid Primera Nacional',
+    description: 'Analisis de las 6 primeras jornadas de Atletico Valladolid en la Primera Nacional, con una obtencion de datos mediante excel, para sacar estadisticas generales y estadisticas de los lanzamientos de los jugadores',
+    date: 'Diciembre 2024',
     tags: ['Estadísticas', 'Rendimiento', 'Análisis de Datos'],
-    pdf: '/analisis/tendencias-juego.pdf',
+    type: 'pdf',
+    content: '/analisis/Analisis ATV Primera.pdf',
   },
-
 ];
 
 const HandballAnalysis = () => {
+  const [selectedContent, setSelectedContent] = useState(null);
+  const [contentType, setContentType] = useState(null);
+
+  const openModal = (content, type) => {
+    setSelectedContent(content);
+    setContentType(type);
+  };
+
+  const closeModal = (e) => {
+    if (e.target === e.currentTarget) {
+      setSelectedContent(null);
+      setContentType(null);
+    }
+  };
+
   return (
     <div className="min-h-screen pt-20">
+      {/* Content Modal */}
+      {selectedContent && (
+        <div 
+          onClick={closeModal}
+          className="fixed inset-0 bg-black/90 z-50 flex items-center justify-center p-4 cursor-pointer"
+        >
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 0.9 }}
+            className="relative w-full max-w-6xl h-[80vh] cursor-default"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div className="w-full h-full rounded-lg overflow-hidden">
+              {contentType === 'video' ? (
+                <iframe
+                  src={selectedContent}
+                  title="Video Analysis"
+                  className="w-full h-full focus:outline-none"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                ></iframe>
+              ) : (
+                <iframe
+                  src={`${selectedContent}#view=FitH`}
+                  title="PDF Analysis"
+                  className="w-full h-full focus:outline-none"
+                ></iframe>
+              )}
+            </div>
+          </motion.div>
+        </div>
+      )}
+
       {/* Hero Section */}
       <section className="relative py-20 px-4">
         <div className="container mx-auto">
@@ -138,16 +192,24 @@ const HandballAnalysis = () => {
                   Publicado: {analysis.date}
                 </div>
                 <div className="flex justify-center">
-                  <motion.a
+                  <motion.button
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
-                    href={analysis.pdf}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="btn btn-primary px-8 text-center"
+                    onClick={() => openModal(analysis.content, analysis.type)}
+                    className="btn btn-primary px-8 text-center focus:outline-none focus:ring-0 flex items-center gap-2"
                   >
-                    Ver Análisis
-                  </motion.a>
+                    {analysis.type === 'video' ? (
+                      <>
+                        <FaVideo className="text-lg" />
+                        Ver Video
+                      </>
+                    ) : (
+                      <>
+                        <FaBook className="text-lg" />
+                        Ver PDF
+                      </>
+                    )}
+                  </motion.button>
                 </div>
               </motion.div>
             ))}
