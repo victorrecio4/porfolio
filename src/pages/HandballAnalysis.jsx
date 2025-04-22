@@ -30,7 +30,7 @@ const analyses = [
     description: 'Estudio detallado del juego de la Seleccion de Andalucia Cadete en el CESA 2025',
     date: 'Enero 2025',
     tags: ['Táctica', 'Defensa', 'Análisis de Video'],
-    pdf: '/public/analisis/INFORME SELECCION NAVARRA CADETE .pdf',
+    pdf: '/analisis/INFORME SELECCION NAVARRA CADETE .pdf',
   },
   {
     title: 'Analisis propio CDBM Delicias',
@@ -44,7 +44,7 @@ const analyses = [
     description: 'Estudio detallador del juego y jugadores de Ademar León Juvenil para Fase Final CYL 2025',
     date: 'Abril 2025',
     tags: ['Táctica', 'Defensa', 'Análisis de Video'],
-    pdf: '/public/analisis/analisis ademar.pdf',
+    pdf: '/analisis/analisis ademar.pdf',
   },
   {
     title: 'Estadísticas de Eficiencia CDBM Delicias',
