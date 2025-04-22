@@ -41,7 +41,7 @@ const analyses = [
     date: 'Febrero 2025',
     tags: ['Estadísticas', 'Rendimiento', 'Análisis de Datos'],
     type: 'video',
-    content: 'https://www.youtube.com/embed/VIDEO_ID_2',
+    content: 'https://www.youtube.com/embed/XfdKpqGoajA',
   },
   {
     title: 'Análisis Ademar León Juvenil para Fase Final CYL 2025',
