@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion';
 import { useState } from 'react';
-import { FaBook, FaVideo } from 'react-icons/fa';
+import { FaBook, FaVideo, FaTable, FaTwitter } from 'react-icons/fa';
 
 const experiences = [
   {
@@ -29,7 +29,7 @@ const experiences = [
 const analyses = [
   {
     title: 'Análisis Seleccion de Andalucia Cadete',
-    description: 'Estudio detallado del juego de la Seleccion de Andalucia Cadete en el CESA 2025',
+    description: 'Estudio detallado del juego de la Seleccion de Andalucia Cadete en el CESA 2025.',
     date: 'Enero 2025',
     tags: ['Táctica', 'Defensa', 'Análisis de Video'],
     type: 'pdf',
@@ -53,11 +53,27 @@ const analyses = [
   },
   {
     title: 'Analisis Atletico Valladolid Primera Nacional',
-    description: 'Analisis de las 6 primeras jornadas de Atletico Valladolid en la Primera Nacional, con una obtencion de datos mediante excel, para sacar estadisticas generales y estadisticas de los lanzamientos de los jugadores',
+    description: 'Analisis de las 6 primeras jornadas de Atletico Valladolid en la Primera Nacional, con una obtencion de datos mediante excel, para sacar estadisticas generales y estadisticas de los lanzamientos de los jugadores.',
     date: 'Diciembre 2024',
     tags: ['Estadísticas', 'Rendimiento', 'Análisis de Datos'],
     type: 'pdf',
     content: '/analisis/Analisis ATV Primera.pdf',
+  },
+  {
+    title: 'RPE CDBM Delicias Juvenil',
+    description: 'Análisis de estado de forma de los jugadores del CDBM Delicias durante las diferentes fases del sector de CYL.',
+    date: 'Marzo 2025',
+    tags: ['Fisico', 'Preparacion Fisica', 'Análisis de Datos'],
+    type: 'sheet',
+    content: 'https://docs.google.com/spreadsheets/d/1H_aWE5JpojbMjuAHDRv-a9Uz10p_KvlbZV-TRyVAMMU/edit?usp=sharing',
+  },
+  {
+    title: 'Análisis Cuartos Mundial 2025',
+    description: 'Análisis detallado de los cuartos de final del Mundial de Balonmano 2025, con un enfoque en las tácticas y estrategias utilizadas por los equipos.',
+    date: 'Enero 2025',
+    tags: ['Mundial', 'Táctica', 'Análisis de Video'],
+    type: 'twitter',
+    content: 'https://x.com/victorrecio_4/status/1883853376494108713',
   },
 ];
 
@@ -89,7 +105,7 @@ const HandballAnalysis = () => {
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0, scale: 0.9 }}
-            className="relative w-full max-w-6xl h-[80vh] cursor-default"
+            className="relative w-full max-w-4xl h-[70vh] cursor-default"
             onClick={(e) => e.stopPropagation()}
           >
             <div className="w-full h-full rounded-lg overflow-hidden">
@@ -101,12 +117,40 @@ const HandballAnalysis = () => {
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                   allowFullScreen
                 ></iframe>
-              ) : (
+              ) : contentType === 'pdf' ? (
                 <iframe
                   src={`${selectedContent}#view=FitH`}
                   title="PDF Analysis"
                   className="w-full h-full focus:outline-none"
                 ></iframe>
+              ) : contentType === 'sheet' ? (
+                <iframe
+                  src={selectedContent.replace('/edit?usp=sharing', '/preview')}
+                  title="Sheet Analysis"
+                  className="w-full h-full focus:outline-none"
+                ></iframe>
+              ) : (
+                <div className="w-full h-full flex items-center justify-center bg-white p-4">
+                  <div className="flex items-center justify-center w-full h-full">
+                    <div className="flex items-center justify-center w-full h-full">
+                      <iframe
+                        src={`https://platform.twitter.com/embed/Tweet.html?id=${selectedContent.split('/').pop()}&conversation=all`}
+                        title="Twitter Thread"
+                        className="focus:outline-none"
+                        style={{ 
+                          border: 'none', 
+                          width: '100%',
+                          height: '100%',
+                          minWidth: '300px',
+                          minHeight: '500px',
+                          display: 'flex',
+                          alignItems: 'center',
+                          justifyContent: 'center'
+                        }}
+                      ></iframe>
+                    </div>
+                  </div>
+                </div>
               )}
             </div>
           </motion.div>
@@ -114,7 +158,7 @@ const HandballAnalysis = () => {
       )}
 
       {/* Hero Section */}
-      <section className="relative py-20 px-4">
+      <section className="relative py-10 px-4">
         <div className="container mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -125,15 +169,61 @@ const HandballAnalysis = () => {
             <h1 className="text-6xl font-bold mb-6 gradient-text">
               Experiencia en Balonmano
             </h1>
-            <p className="text-2xl text-white/80">
-              Jugador, Entrenador y Analista
-            </p>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* About Me Section */}
+      <section className="py-5 px-4">
+        <div className="container mx-auto">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            className="flex flex-col md:flex-row items-center gap-12"
+          >
+            <div className="w-full md:w-1/3">
+              <div className="relative">
+                <motion.div
+                  whileHover={{ scale: 1.02 }}
+                  className="rounded-full overflow-hidden border-4 border-accent/20"
+                >
+                  <img
+                    src="./src/foto-perfil.jpg"
+                    alt="Foto de perfil"
+                    className="w-full h-auto"
+                  />
+                </motion.div>
+              </div>
+            </div>
+            <div className="w-full md:w-2/3">
+              <h2 className="text-4xl font-bold mb-6 gradient-text">
+                Sobre Mí
+              </h2>
+              <p className="text-xl text-white/80 mb-6">
+                Apasionado del balonmano con más de 15 años de experiencia como jugador. 
+                Especializado en análisis táctico y estadístico, combinando mi conocimiento práctico 
+                del juego con herramientas tecnológicas para proporcionar insights detallados y 
+                estrategias efectivas. Actualmente me encuentro formandome como entrenador de balonmano en base del club CDBM Delicias.
+              </p>
+              <div className="flex flex-wrap gap-4">
+                <span className="bg-accent/20 text-accent px-4 py-2 rounded-full">
+                  Jugador Activo
+                </span>
+                <span className="bg-accent2/20 text-accent2 px-4 py-2 rounded-full">
+                  Entrenador Nivel II
+                </span>
+                <span className="bg-accent3/20 text-accent3 px-4 py-2 rounded-full">
+                  Analista de Video
+                </span>
+              </div>
+            </div>
           </motion.div>
         </div>
       </section>
 
       {/* Experience Section */}
-      <section className="py-20 px-4 bg-secondary/50">
+      <section className="py-10 px-4 bg-secondary/50">
         <div className="container mx-auto">
           <h2 className="text-4xl font-bold mb-12 text-center gradient-text">
             Mi Trayectoria
@@ -203,10 +293,20 @@ const HandballAnalysis = () => {
                         <FaVideo className="text-lg" />
                         Ver Video
                       </>
-                    ) : (
+                    ) : analysis.type === 'pdf' ? (
                       <>
                         <FaBook className="text-lg" />
                         Ver PDF
+                      </>
+                    ) : analysis.type === 'sheet' ? (
+                      <>
+                        <FaTable className="text-lg" />
+                        Ver Hoja
+                      </>
+                    ) : (
+                      <>
+                        <FaTwitter className="text-lg" />
+                        Ver Tweet
                       </>
                     )}
                   </motion.button>

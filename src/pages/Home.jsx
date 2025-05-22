@@ -45,13 +45,13 @@ const Home = () => {
 
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
             {[
-              { name: 'React', color: 'accent' },
-              { name: 'JavaScript', color: 'accent2' },
+              { name: 'XPS/Longo Match', color: 'accent' },
+              { name: 'HTML/CSS/JS', color: 'accent2' },
               { name: 'Python', color: 'accent3' },
               { name: 'Análisis de Datos', color: 'accent' },
               { name: 'Tácticas de Balonmano', color: 'accent2' },
               { name: 'Estadísticas', color: 'accent3' },
-              { name: 'UI/UX', color: 'accent' },
+              { name: 'Canva', color: 'accent' },
               { name: 'Desarrollo Web', color: 'accent2' },
             ].map((skill, index) => (
               <motion.div
@@ -99,9 +99,12 @@ const Home = () => {
               transition={{ duration: 0.8 }}
               className="relative"
             >
-              <div className="aspect-square rounded-full overflow-hidden glass-effect">
-                {/* Aquí iría tu imagen de perfil */}
-                <div className="w-full h-full bg-gradient-to-br from-accent via-accent2 to-accent3 opacity-20" />
+              <div className="aspect-square rounded-full overflow-hidden glass-effect w-50 h-50 mx-auto">
+                <img
+                  src="./src/fotoperfil.jpg"
+                  alt="Foto de perfil"
+                  className="w-full h-full object-cover"
+                />
               </div>
             </motion.div>
           </div>
