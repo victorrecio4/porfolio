@@ -189,7 +189,7 @@ const HandballAnalysis = () => {
                   className="rounded-full overflow-hidden border-4 border-accent/20"
                 >
                   <img
-                    src="./src/foto-perfil.jpg"
+                    src="src/foto-perfil.jpg"
                     alt="Foto de perfil"
                     className="w-full h-auto"
                   />
