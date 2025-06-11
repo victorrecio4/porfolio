@@ -44,6 +44,14 @@ const analyses = [
     content: 'https://www.youtube.com/embed/XfdKpqGoajA',
   },
   {
+    title: 'Análisis Lanzamientos de BM Burgos para partido Final CYL 2025',
+    description: 'Analisis Lanzamientos de BM Burgos para partido Final CYL 2025 para mejorar la preparacion de los porteros para el partido',
+    date: 'Abril 2025',
+    tags: ['Táctica', 'Lanzamientos', 'Análisis de Video'],
+    type: 'video',
+    content: 'https://www.youtube.com/watch?v=fHV3nLHaPVI',
+  },
+  {
     title: 'Análisis Ademar León Juvenil para Fase Final CYL 2025',
     description: 'Estudio detallador del juego y jugadores de Ademar León Juvenil para Fase Final CYL 2025',
     date: 'Abril 2025',
@@ -66,6 +74,14 @@ const analyses = [
     tags: ['Fisico', 'Preparacion Fisica', 'Análisis de Datos'],
     type: 'sheet',
     content: 'https://docs.google.com/spreadsheets/d/1H_aWE5JpojbMjuAHDRv-a9Uz10p_KvlbZV-TRyVAMMU/edit?usp=sharing',
+  },
+  {
+    title: 'Datos extraidos de partido con XPS ',
+    description: 'Datos extraidos de partido con XPS para el CDBM Delicias',
+    date: 'Marzo 2025',
+    tags: ['Estadisticas', 'XPS', 'Análisis de Datos'],
+    type: 'sheet',
+    content: 'https://docs.google.com/spreadsheets/d/12FjtisHSR2Bn6VjPYqxfCGUGPzqRCTi7sR9tYES1kKo/edit?gid=1111169001#gid=1111169001',
   },
   {
     title: 'Análisis Cuartos Mundial 2025',
@@ -391,7 +407,7 @@ const HandballAnalysis = () => {
               <motion.a
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                href="mailto:tu@email.com"
+                href="mailto:vrecio1@gmail.com"
                 className="btn btn-primary px-8"
               >
                 Enviar Email
@@ -399,7 +415,7 @@ const HandballAnalysis = () => {
               <motion.a
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                href="https://linkedin.com/in/tu-perfil"
+                href="https://linkedin.com/in/victomrecio"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="btn btn-secondary px-8"
