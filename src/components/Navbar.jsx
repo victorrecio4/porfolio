@@ -16,7 +16,7 @@ const Navbar = () => {
             </Link>
           </motion.div>
           
-          <div className="flex space-x-8">
+          {/* <div className="flex space-x-8">
             <motion.div
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.95 }}
@@ -43,7 +43,7 @@ const Navbar = () => {
                 Balonmano
               </Link>
             </motion.div>
-          </div>
+          </div> */}
         </div>
       </div>
     </nav>

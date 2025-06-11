@@ -1,8 +1,8 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Home from './pages/Home';
-import Projects from './pages/Projects';
-import HandballAnalysis from './pages/HandballAnalysis';
+// import Projects from './pages/Projects';
+// import HandballAnalysis from './pages/HandballAnalysis';
 import Footer from './components/Footer';
 
 function App() {
@@ -13,8 +13,8 @@ function App() {
         <main className="flex-grow">
           <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="/projects" element={<Projects />} />
-            <Route path="/handball-analysis" element={<HandballAnalysis />} />
+            {/* <Route path="/projects" element={<Projects />} />
+            <Route path="/handball-analysis" element={<HandballAnalysis />} /> */}
           </Routes>
         </main>
         <Footer />
