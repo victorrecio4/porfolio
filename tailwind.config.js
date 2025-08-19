@@ -12,6 +12,7 @@ export default {
         accent: "#00f5d4",
         accent2: "#ff206e",
         accent3: "#fbff12",
+        accent4: "#27F527",
       },
       fontFamily: {
         sans: ['Inter', 'sans-serif'],

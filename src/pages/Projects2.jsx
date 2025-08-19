@@ -1,29 +1,77 @@
 import { motion } from 'framer-motion';
+import { useState } from 'react';
+import { FaVideo } from 'react-icons/fa';
 
 const projects = [
   {
-    title: 'Sistema de Análisis de Balonmano',
-    description: 'Aplicación web para el análisis táctico y estadístico de partidos de balonmano.',
-    technologies: ['React', 'Python', 'MongoDB'],
-    image: '/project1.jpg',
-  },
-  {
-    title: 'Plataforma de Gestión Deportiva',
-    description: 'Sistema integral para la gestión de equipos y torneos de balonmano.',
-    technologies: ['Node.js', 'Express', 'PostgreSQL'],
-    image: '/project2.jpg',
-  },
-  {
-    title: 'Dashboard de Estadísticas',
-    description: 'Visualización interactiva de estadísticas y métricas de rendimiento.',
-    technologies: ['D3.js', 'React', 'Python'],
+    title: 'Dashboard de Estadísticas V1',
+    description:
+      'Visualización de estadisticas de partidos y lanzamientos de jugadores. Con almacenamiento de datos en base de datos',
+    technologies: ['Python', 'Flask', 'HTML/CSS', 'JavaScript', 'PostgreSQL'],
     image: '/project3.jpg',
+  },
+  {
+    title: 'Dashboard de Estadísticas V2',
+    description:
+      'Mejora en la visualización de estadísticas de partidos, con nuevas funcionalidades y mejoras de rendimiento. Mejora en extracción de clips, mejoras visuales y rendimiento.',
+    technologies: [
+      'Python',
+      'Flask',
+      'HTML/CSS',
+      'JavaScript',
+      'PostgreSQL',
+      'TailwindCSS',
+    ],
+    type: 'video',
+    content: 'https://www.youtube.com/embed/Jawoh3f6WrE',
+  },
+  {
+    title: 'TFG GRADO SUPERIOR DAW',
+    description:
+      'Aplicación móvil para coger ubicación de las diferentes obras para mejor localización',
+    technologies: ['React', 'Python', 'Selenium', 'Flask'],
+    image: '/project1.jpg',
   },
 ];
 
 const Projects = () => {
+  const [selectedVideo, setSelectedVideo] = useState(null);
+
+  const openVideo = (url) => setSelectedVideo(url);
+  const closeVideo = (e) => {
+    if (e.target === e.currentTarget) {
+      setSelectedVideo(null);
+    }
+  };
+
   return (
-    <div className="container mx-auto px-4 py-12">
+    <div className="container mx-auto px-4 py-12 pt-28">
+      {/* Modal de Video */}
+      {selectedVideo && (
+        <div
+          onClick={closeVideo}
+          className="fixed inset-0 bg-black/90 z-50 flex items-center justify-center p-4 cursor-pointer"
+        >
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 0.9 }}
+            transition={{ duration: 0.3 }}
+            className="relative w-full max-w-4xl h-[70vh] cursor-default"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <iframe
+              src={selectedVideo}
+              title="Video del proyecto"
+              className="w-full h-full rounded-lg"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowFullScreen
+            ></iframe>
+          </motion.div>
+        </div>
+      )}
+
+      {/* Encabezado */}
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
@@ -36,6 +84,7 @@ const Projects = () => {
         </p>
       </motion.div>
 
+      {/* Tarjetas */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         {projects.map((project, index) => (
           <motion.div
@@ -44,14 +93,30 @@ const Projects = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: index * 0.2 }}
             whileHover={{ scale: 1.02 }}
-            className="card"
+            className="card bg-primary/10 p-4 rounded-lg shadow-lg"
           >
-            <div className="aspect-w-16 aspect-h-9 mb-4">
-              <img
-                src={project.image}
-                alt={project.title}
-                className="w-full h-full object-cover rounded-lg"
-              />
+            <div className="aspect-w-16 aspect-h-9 mb-4 relative">
+              {project.type === 'video' ? (
+                <>
+                  {/* <img
+                    src="/video-placeholder.jpg"
+                    alt={project.title}
+                    className="w-full h-full object-cover rounded-lg"
+                  /> */}
+                  <button
+                    onClick={() => openVideo(project.content)}
+                    className="absolute inset-0 flex items-center justify-center text-white bg-black/50 hover:bg-black/70 rounded-lg transition"
+                  >
+                    <FaVideo className="text-4xl" />
+                  </button>
+                </>
+              ) : (
+                <img
+                  src={project.image}
+                  alt={project.title}
+                  className="w-full h-full object-cover rounded-lg"
+                />
+              )}
             </div>
             <h2 className="text-2xl font-bold mb-2">{project.title}</h2>
             <p className="text-gray-300 mb-4">{project.description}</p>
@@ -65,7 +130,6 @@ const Projects = () => {
                 </span>
               ))}
             </div>
-            <button className="btn btn-primary w-full">Ver Detalles</button>
           </motion.div>
         ))}
       </div>
@@ -73,4 +137,4 @@ const Projects = () => {
   );
 };
 
-export default Projects; 
+export default Projects;

@@ -28,7 +28,7 @@ const Footer = () => {
             <motion.a
               whileHover={{ scale: 1.2, color: '#00f5d4' }}
               whileTap={{ scale: 0.95 }}
-              href="https://github.com/tu-usuario"
+              href="https://github.com/victorrecio4"
               target="_blank"
               rel="noopener noreferrer"
               className="text-white/60 hover:text-accent transition-colors"
@@ -39,7 +39,7 @@ const Footer = () => {
             <motion.a
               whileHover={{ scale: 1.2, color: '#ff206e' }}
               whileTap={{ scale: 0.95 }}
-              href="https://linkedin.com/in/tu-usuario"
+              href="https://linkedin.com/in/victomrecio"
               target="_blank"
               rel="noopener noreferrer"
               className="text-white/60 hover:text-accent2 transition-colors"
@@ -50,7 +50,7 @@ const Footer = () => {
             <motion.a
               whileHover={{ scale: 1.2, color: '#fbff12' }}
               whileTap={{ scale: 0.95 }}
-              href="https://twitter.com/tu-usuario"
+              href="https://twitter.com/victorrecio4"
               target="_blank"
               rel="noopener noreferrer"
               className="text-white/60 hover:text-accent3 transition-colors"
