@@ -41,7 +41,7 @@ const analyses = [
       'TailwindCSS',
     ],
     type: 'video',
-    content: 'https://www.youtube.com/embed/Jawoh3f6WrE',
+    content: 'https://youtu.be/RlzBP4W50QE',
   },
   {
     title: 'Dashboard de Estadísticas V1',
